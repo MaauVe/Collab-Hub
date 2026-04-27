@@ -2,26 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Collab-Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collab-Hub | Diseño Premium</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header class="top-bar">
-        <h1>Collab-Hub</h1>
+        <div class="logo-text">Collab-Hub</div>
         <div class="conexion-info">
-            <span id="indicador-estado">Desconectado</span>
+            <span id="indicador-estado">🔴 Desconectado</span>
             <input type="text" id="input-nombre" placeholder="Escribe tu nombre..." />
             <button id="btn-entrar">Unirse a la sesión</button>
         </div>
     </header>
 
     <div class="app-container">
-        <main id="zona-editor">
-            <textarea id="editor-texto" placeholder="Esperando conexión para escribir..." disabled></textarea>
+        <main class="editor-section">
+            <header class="editor-header">
+                <h1>Editor Compartido</h1>
+                <p>Espacio de trabajo colaborativo</p>
+            </header>
+            
+            <div class="editor-wrapper">
+                <textarea id="editor-texto" placeholder="Conéctate para empezar a escribir..." disabled></textarea>
+            </div>
         </main>
 
-        <aside id="zona-presencia">
-            <h2>Usuarios Activos</h2>
+        <aside class="presence-section">
+            <h2>En línea</h2>
             <ul id="lista-usuarios">
                 </ul>
         </aside>
