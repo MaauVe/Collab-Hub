@@ -7,23 +7,31 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <header class="top-bar">
+        <div class="logo-text">Collab-Hub</div>
+        <div class="conexion-info">
+            <span id="indicador-estado">🔴 Desconectado</span>
+            <input type="text" id="input-nombre" placeholder="Escribe tu nombre..." />
+            <button id="btn-entrar">Unirse a la sesión</button>
+        </div>
+    </header>
+
     <div class="app-container">
         <main class="editor-section">
             <header class="editor-header">
-                <h1>Collab-Hub</h1>
+                <h1>Editor Compartido</h1>
                 <p>Espacio de trabajo colaborativo</p>
             </header>
             
             <div class="editor-wrapper">
-                <textarea id="editor-texto" placeholder="Escribe algo brillante..."></textarea>
+                <textarea id="editor-texto" placeholder="Conéctate para empezar a escribir..." disabled></textarea>
             </div>
         </main>
 
         <aside class="presence-section">
             <h2>En línea</h2>
             <ul id="lista-usuarios">
-                <li class="usuario-activo">Mauricio</li>
-            </ul>
+                </ul>
         </aside>
     </div>
 
