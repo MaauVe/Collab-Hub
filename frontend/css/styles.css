@@ -1,1 +1,104 @@
-/*Diseño visual de la UI*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', sans-serif; /* Una fuente más moderna para tech */
+}
+
+body {
+    background-color: #0f172a; /* Fondo oscuro profundo */
+    color: #f8fafc;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    height: 100%;
+}
+
+/* --- Sección del Editor --- */
+.editor-section {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    overflow-y: auto;
+}
+
+.editor-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.editor-header h1 {
+    font-size: 3rem;
+    background: linear-gradient(90deg, #818cf8, #2dd4bf); /* Degradado llamativo */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.editor-wrapper {
+    width: 100%;
+    max-width: 800px; /* Ancho máximo para que no se estire demasiado */
+    display: flex;
+    justify-content: center;
+}
+
+#editor-texto {
+    width: 100%;
+    min-height: 150px; /* Empieza ocupando la mitad del espacio previo */
+    max-height: 60vh;   /* Límite máximo de crecimiento */
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    background-color: #1e293b;
+    color: #e2e8f0;
+    border: 2px solid #334155;
+    border-radius: 12px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    overflow-y: hidden; /* Ocultamos la barra hasta que llegue al límite */
+}
+
+#editor-texto:focus {
+    border-color: #2dd4bf;
+    box-shadow: 0 0 20px rgba(45, 212, 191, 0.2);
+}
+
+/* --- Barra de Presencia --- */
+.presence-section {
+    background-color: #1e293b;
+    border-left: 2px solid #334155;
+    padding: 2rem;
+}
+
+.presence-section h2 {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.usuario-activo {
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.usuario-activo::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #2dd4bf;
+    border-radius: 50%;
+    margin-right: 12px;
+    box-shadow: 0 0 10px #2dd4bf;
+}
