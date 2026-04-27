@@ -1,0 +1,1 @@
+//Lógica del widget de usuarios activos (Responsabilidad del Rol 4)

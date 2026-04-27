@@ -1,0 +1,1 @@
+//Lógica para mandar/recibir texto (Tu responsabilidad principal, Rol 3)
