@@ -1,1 +1,33 @@
-# Pantalla principal donde se une todo (Módulo de Integración)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collab-Hub | Diseño Premium</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <main class="editor-section">
+            <header class="editor-header">
+                <h1>Collab-Hub</h1>
+                <p>Espacio de trabajo colaborativo</p>
+            </header>
+            
+            <div class="editor-wrapper">
+                <textarea id="editor-texto" placeholder="Escribe algo brillante..."></textarea>
+            </div>
+        </main>
+
+        <aside class="presence-section">
+            <h2>En línea</h2>
+            <ul id="lista-usuarios">
+                <li class="usuario-activo">Mauricio</li>
+            </ul>
+        </aside>
+    </div>
+
+    <script src="js/editor.js"></script>
+    <script src="js/presencia.js"></script>
+</body>
+</html>
