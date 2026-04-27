@@ -1,1 +1,33 @@
-# Pantalla principal donde se une todo (Módulo de Integración)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Collab-Hub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="top-bar">
+        <h1>Collab-Hub</h1>
+        <div class="conexion-info">
+            <span id="indicador-estado">Desconectado</span>
+            <input type="text" id="input-nombre" placeholder="Escribe tu nombre..." />
+            <button id="btn-entrar">Unirse a la sesión</button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <main id="zona-editor">
+            <textarea id="editor-texto" placeholder="Esperando conexión para escribir..." disabled></textarea>
+        </main>
+
+        <aside id="zona-presencia">
+            <h2>Usuarios Activos</h2>
+            <ul id="lista-usuarios">
+                </ul>
+        </aside>
+    </div>
+
+    <script src="js/editor.js"></script>
+    <script src="js/presencia.js"></script>
+</body>
+</html>
