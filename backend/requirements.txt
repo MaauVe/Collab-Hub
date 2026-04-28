@@ -1,1 +1,3 @@
-# Dependencias de Python (FastAPI, uvicorn, etc.)
+fastapi
+uvicorn[standard]
+websockets

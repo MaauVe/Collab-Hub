@@ -1,1 +1,2 @@
 # Ignora entornos virtuales, archivos basura y temporales
+.venv
