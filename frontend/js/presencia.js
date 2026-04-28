@@ -63,11 +63,50 @@ function renderizarUsuarios(usuarios) {
     
     usuarios.forEach(user => {
         const li = document.createElement('li');
-        li.textContent = `${user.nombre}`;
+        // Ahora mostramos el nombre y el estado
+        li.textContent = `${user.nombre} - ${user.estado}`;
         
         // Usamos la clase CSS de Mauricio para mantener el diseño Premium
         li.classList.add("usuario-activo"); 
         
+        // Cambiar el estilo si está inactivo
+        if (user.estado.includes("Inactivo")) {
+            li.style.opacity = "0.6";
+        }
+        
         listaUsuariosHTML.appendChild(li);
     });
 }
+
+// ==========================================
+// 4. DETECTOR DE INACTIVIDAD (NUEVO)
+// ==========================================
+let timeoutInactividad;
+const TIEMPO_INACTIVO = 5000; // 5 segundos para pruebas (luego puedes subirlo a 30000)
+
+function reiniciarTemporizador() {
+    // Si no estamos conectados, no hacemos nada
+    if (!socket || socket.readyState !== WebSocket.OPEN) return;
+
+    // Avisamos al servidor que estamos activos
+    socket.send(JSON.stringify({
+        tipo: "cambio_estado",
+        estado: "Activo"
+    }));
+
+    clearTimeout(timeoutInactividad);
+
+    // Si pasan 5 segundos sin actividad, mandamos estado inactivo
+    timeoutInactividad = setTimeout(() => {
+        if (socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify({
+                tipo: "cambio_estado",
+                estado: "Inactivo"
+            }));
+        }
+    }, TIEMPO_INACTIVO);
+}
+
+// Escuchamos cualquier movimiento o tecla para mantener al usuario "Activo"
+window.addEventListener('mousemove', reiniciarTemporizador);
+window.addEventListener('keydown', reiniciarTemporizador);

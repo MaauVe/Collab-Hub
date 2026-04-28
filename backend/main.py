@@ -24,6 +24,13 @@ class IPresenceManager(ABC):
 
 # Implementación del Componente B
 class GestorDePresencia(IPresenceManager):
+    async def actualizar_estado(self, websocket: WebSocket, nuevo_estado: str):
+        for conn in self.conexiones_activas:
+            if conn["ws"] == websocket:
+                conn["estado"] = nuevo_estado
+                break
+        await self.broadcast_usuarios()
+
     def __init__(self):
         self.conexiones_activas: List[Dict] = []
 
@@ -60,7 +67,12 @@ async def websocket_presencia(websocket: WebSocket, nombre: str = "Anónimo"):
     await presence_component.conectar(websocket, nombre)
     try:
         while True:
-            data = await websocket.receive_text()
+            data = await websocket.receive_json()
+
+            if data.get("tipo") == "cambio_estado":
+                nuevo_estado = data.get("estado")
+                await presence_component.actualizar_estado(websocket, nuevo_estado)
+                
     except WebSocketDisconnect:
         presence_component.desconectar(websocket)
         await presence_component.broadcast_usuarios()
