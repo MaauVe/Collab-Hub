@@ -41,6 +41,9 @@ btnEntrar.addEventListener('click', () => {
         if (datos.tipo === "actualizacion_usuarios") {
             renderizarUsuarios(datos.usuarios);
         }
+        else if (datos.tipo === "notificacion") {
+            mostrarToast(datos.mensaje);
+        }
     };
 
     // --- C. Cuando se pierde la conexión ---
@@ -79,10 +82,10 @@ function renderizarUsuarios(usuarios) {
 }
 
 // ==========================================
-// 4. DETECTOR DE INACTIVIDAD (NUEVO)
+// 4. DETECTOR DE INACTIVIDAD
 // ==========================================
 let timeoutInactividad;
-const TIEMPO_INACTIVO = 5000; // 5 segundos para pruebas (luego puedes subirlo a 30000)
+const TIEMPO_INACTIVO = 5000; // 5 segundos para pruebas (luego se puede subir a 30000)
 
 function reiniciarTemporizador() {
     // Si no estamos conectados, no hacemos nada
@@ -105,6 +108,26 @@ function reiniciarTemporizador() {
             }));
         }
     }, TIEMPO_INACTIVO);
+}
+
+// ==========================================
+// 5. FUNCIÓN PARA DIBUJAR EL TOAST
+// ==========================================
+function mostrarToast(mensaje) {
+    const container = document.getElementById('toast-container');
+    if (!container) return; 
+    
+    // Creamos el div de la notificación
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.textContent = mensaje;
+    
+    // Lo agregamos a la pantalla
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3500);
 }
 
 // Escuchamos cualquier movimiento o tecla para mantener al usuario "Activo"
