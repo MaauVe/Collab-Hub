@@ -33,14 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Por ahora lo vemos en consola. 
         console.log("Enviando al servidor:", textoActual);
 
-        /* TODO (FASE 3): Cuando el backend esté listo, descomenta esto para enviarlo
+        // TODO (FASE 3): Cuando el backend esté listo, descomenta esto para enviarlo
         if (socket.readyState === WebSocket.OPEN) {
             socket.send(JSON.stringify({
                 tipo: 'actualizacion_texto',
                 contenido: textoActual
             }));
         }
-        */
     });
 
     // Ejecutar una vez al cargar por si hay texto previo
@@ -58,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- PREPARACIÓN PARA WEBSOCKETS (Para cuando FastAPI esté listo) ---
-    /*
+    
     // Cambiarán 'localhost:8000' por la ruta que les dé el equipo de backend
     const socket = new WebSocket('ws://localhost:8000/ws/editor');
 
@@ -78,5 +77,5 @@ document.addEventListener('DOMContentLoaded', () => {
     socket.onerror = (error) => {
         console.error("Error en la conexión:", error);
     };
-    */
+    
 });
